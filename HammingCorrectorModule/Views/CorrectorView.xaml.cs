@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CodeMatrixModule.Views
+namespace HammingCorrectorModule.Views
 {
     /// <summary>
-    /// Interaction logic for ViewA.xaml
+    /// Interaction logic for CorrectorView.xaml
     /// </summary>
-    public partial class ViewA : UserControl
+    public partial class CorrectorView : UserControl
     {
-        public ViewA()
+        public CorrectorView()
         {
             InitializeComponent();
         }

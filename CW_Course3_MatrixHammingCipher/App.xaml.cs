@@ -34,8 +34,8 @@ namespace CW_Course3_MatrixHammingCipher
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            //moduleCatalog.AddModule<ModuleA.ModuleAModule>();
-            //moduleCatalog.AddModule<ModuleB.ModuleBModule>();
+            moduleCatalog.AddModule<HammingCorrectorModule.HammingCorrectorModuleModule>();
+            moduleCatalog.AddModule<CodeMatrixModule.CodeMatrixModuleModule>();
         }
 
         #endregion

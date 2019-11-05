@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,18 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using FirstFloor.ModernUI.Windows.Controls;
 
-namespace CW_Course3_MatrixHammingCipher.Views
+namespace CodeMatrixModule.Views
 {
-
     /// <summary>
-    /// Interaction logic for HammingPage.xaml
+    /// Interaction logic for MatrixView.xaml
     /// </summary>
-    public partial class HammingPage : UserControl
+    public partial class MatrixView : UserControl
     {
-
-        public HammingPage()
+        public MatrixView()
         {
             InitializeComponent();
         }

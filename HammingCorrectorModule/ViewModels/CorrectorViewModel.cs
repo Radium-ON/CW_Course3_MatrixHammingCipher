@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HammingCorrectorModule.ViewModels
 {
-    public class ViewAViewModel : BindableBase
+    public class CorrectorViewModel : BindableBase
     {
         private string _message;
         public string Message
@@ -17,9 +17,9 @@ namespace HammingCorrectorModule.ViewModels
             set { SetProperty(ref _message, value); }
         }
 
-        public ViewAViewModel()
+        public CorrectorViewModel()
         {
-            Message = "View A from your Prism Module";
+            Message = "View HammingCorrector from your Prism Module";
         }
     }
 }

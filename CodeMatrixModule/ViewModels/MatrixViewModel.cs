@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CodeMatrixModule.ViewModels
 {
-    public class ViewAViewModel : BindableBase
+    public class MatrixViewModel : BindableBase
     {
         private string _message;
         public string Message
@@ -17,9 +17,9 @@ namespace CodeMatrixModule.ViewModels
             set { SetProperty(ref _message, value); }
         }
 
-        public ViewAViewModel()
+        public MatrixViewModel()
         {
-            Message = "View A from your Prism Module";
+            Message = "View CodeMatrix from your Prism Module";
         }
     }
 }
