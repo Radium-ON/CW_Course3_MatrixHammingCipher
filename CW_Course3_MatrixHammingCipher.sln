@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CW_Course3_MatrixHammingCipher", "CW_Course3_MatrixHammingCipher\CW_Course3_MatrixHammingCipher.csproj", "{CA5F7B3D-7849-4479-BF0C-F685E7ADDC15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeMatrixModule", "CodeMatrixModule\CodeMatrixModule.csproj", "{5854FE10-C954-4540-82F1-A2742392EDA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeMatrix", "CodeMatrixModule\CodeMatrix.csproj", "{5854FE10-C954-4540-82F1-A2742392EDA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HammingCorrectorModule", "HammingCorrectorModule\HammingCorrectorModule.csproj", "{B871C199-CFBE-4F81-ACAA-1BA2748311CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HammingCorrector", "HammingCorrectorModule\HammingCorrector.csproj", "{B871C199-CFBE-4F81-ACAA-1BA2748311CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
