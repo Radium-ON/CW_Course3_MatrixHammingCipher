@@ -5,7 +5,7 @@ using Prism.Regions;
 
 namespace HammingCorrectorModule
 {
-    public class HammingCorrectorModuleModule : IModule
+    public class HammingCorrectorModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {

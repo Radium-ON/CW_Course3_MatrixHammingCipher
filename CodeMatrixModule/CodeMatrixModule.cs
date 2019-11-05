@@ -5,7 +5,7 @@ using Prism.Regions;
 
 namespace CodeMatrixModule
 {
-    public class CodeMatrixModuleModule : IModule
+    public class CodeMatrixModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {
