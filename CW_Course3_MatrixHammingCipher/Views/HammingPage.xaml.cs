@@ -20,12 +20,12 @@ namespace CW_Course3_MatrixHammingCipher.Views
 {
 
     /// <summary>
-    /// Interaction logic for TaskOnePage.xaml
+    /// Interaction logic for HammingPage.xaml
     /// </summary>
-    public partial class TaskOnePage : UserControl
+    public partial class HammingPage : UserControl
     {
 
-        public TaskOnePage()
+        public HammingPage()
         {
             InitializeComponent();
         }
