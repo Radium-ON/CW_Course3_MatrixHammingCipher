@@ -118,6 +118,10 @@
       <Project>{5854fe10-c954-4540-82f1-a2742392eda8}</Project>
       <Name>CodeMatrix</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GilbertMourEncoding\GilbertMourEncoding.csproj">
+      <Project>{556cf0b8-8e63-478f-9755-8486e8b65072}</Project>
+      <Name>GilbertMourEncoding</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HammingCorrectorModule\HammingCorrector.csproj">
       <Project>{b871c199-cfbe-4f81-acaa-1ba2748311cb}</Project>
       <Name>HammingCorrector</Name>
