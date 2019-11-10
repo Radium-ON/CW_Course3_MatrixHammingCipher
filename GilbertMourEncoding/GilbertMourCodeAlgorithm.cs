@@ -35,7 +35,7 @@ namespace GilbertMourEncoding
         {
             
         }
-        public GilbertMourCodeAlgorithm(ICollection<TableRecord.CharStats> stats)
+        public GilbertMourCodeAlgorithm(ICollection<CodingStepsTable.TableRecord> stats)
         {
             foreach (var stat in stats)
             {

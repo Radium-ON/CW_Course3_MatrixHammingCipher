@@ -14,7 +14,7 @@ namespace GilbertMourEncoding.ViewModels
     public class GilbertViewModel : BindableBase
     {
         #region AutoProperties
-        public TableRecord Entropy { get; set; }
+        public CodingStepsTable Entropy { get; set; }
 
 
 
@@ -41,13 +41,13 @@ namespace GilbertMourEncoding.ViewModels
 
         private void OnTextEnterChanged()
         {
-            Entropy = new TableRecord(EnterText);
-            CharStatsCollection = new ObservableCollection<TableRecord.CharStats>(Entropy.ListStatsOneChar);
+            Entropy = new CodingStepsTable(EnterText);
+            CharStatsCollection = new ObservableCollection<CodingStepsTable.TableRecord>(Entropy.ListStatsOneChar);
         }
 
         #region Backing Fields
         private string _enterText;
-        private ObservableCollection<TableRecord.CharStats> _charStatsCollection;
+        private ObservableCollection<CodingStepsTable.TableRecord> _charStatsCollection;
         private bool _isTextEntered;
         private ObservableCollection<GilbertMourCodeAlgorithm.CodeEntry> _mourCollection;
 
@@ -60,7 +60,7 @@ namespace GilbertMourEncoding.ViewModels
             set => SetProperty(ref _enterText, value, OnTextEnterChanged);
         }
 
-        public ObservableCollection<TableRecord.CharStats> CharStatsCollection
+        public ObservableCollection<CodingStepsTable.TableRecord> CharStatsCollection
         {
             get => _charStatsCollection;
             set => SetProperty(ref _charStatsCollection, value);

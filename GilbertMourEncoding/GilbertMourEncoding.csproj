@@ -36,7 +36,7 @@
     <Reference Include="Prism">
       <HintPath>..\packages\Prism.Core.7.2.0.1367\lib\net45\Prism.dll</HintPath>
     </Reference>
-	<Reference Include="FirstFloor.ModernUI, Version=1.0.9.0, Culture=neutral, PublicKeyToken=bc9b0c37bf06c6a9, processorArchitecture=MSIL">
+    <Reference Include="FirstFloor.ModernUI, Version=1.0.9.0, Culture=neutral, PublicKeyToken=bc9b0c37bf06c6a9, processorArchitecture=MSIL">
       <HintPath>..\packages\ModernUI.WPF.1.0.9\lib\net45\FirstFloor.ModernUI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -57,7 +57,7 @@
   <ItemGroup>
     <Compile Include="GilbertMourCodeAlgorithm.cs" />
     <Compile Include="GilbertMourEncodingModule.cs" />
-    <Compile Include="Models\TableRecord.cs" />
+    <Compile Include="Models\CodingStepsTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
