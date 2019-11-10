@@ -35,8 +35,19 @@ namespace GilbertMourEncoding.ViewModels
         {
             var mour = new GilbertMourCodeAlgorithm(CharStatsCollection);
             MourCollection = new ObservableCollection<GilbertMourCodeAlgorithm.CodeEntry>(mour.CodeEntries);
+            EncodedText = GetCipherFromEnterText(mour.CodeEntries, EnterText);
         }
 
+        private string GetCipherFromEnterText(List<GilbertMourCodeAlgorithm.CodeEntry> mourCodeEntries, string enterText)
+        {
+            var sb = new StringBuilder();
+            foreach (var sign in enterText)
+            {
+                var code = mourCodeEntries.Where(s => s.Xi == sign).Select(c => c.SigmaLimit).Single();
+                sb.Append(code);
+            }
+            return sb.ToString();
+        }
 
 
         private void OnTextEnterChanged()
@@ -50,6 +61,7 @@ namespace GilbertMourEncoding.ViewModels
         private ObservableCollection<CodingStepsTable.TableRecord> _charStatsCollection;
         private bool _isTextEntered;
         private ObservableCollection<GilbertMourCodeAlgorithm.CodeEntry> _mourCollection;
+        private string _encodedText;
 
         #endregion
 
@@ -58,6 +70,11 @@ namespace GilbertMourEncoding.ViewModels
         {
             get => _enterText;
             set => SetProperty(ref _enterText, value, OnTextEnterChanged);
+        }
+        public string EncodedText
+        {
+            get => _encodedText;
+            set => SetProperty(ref _encodedText, value);
         }
 
         public ObservableCollection<CodingStepsTable.TableRecord> CharStatsCollection

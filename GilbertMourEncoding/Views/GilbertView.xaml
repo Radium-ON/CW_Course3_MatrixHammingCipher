@@ -11,14 +11,14 @@
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition />
+            <RowDefinition Height="0.5*"/>
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <ScrollViewer>
             <StackPanel>
                 <TextBlock Text="Введите сообщение" Style="{StaticResource Heading2}" Margin="10,0,0,0" />
                 <TextBox x:Name="tbox_enter_text" Text="{Binding EnterText, UpdateSourceTrigger=PropertyChanged}"
-                    Margin="10" />
+                    Margin="10" FontSize="14" />
                 <Button Content="Кодировать" Command="{Binding MourCodingCommand, UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Left" Margin="10,0,0,0" />
                 <Grid MaxHeight="200" Margin="0,20,10,0">
@@ -45,7 +45,7 @@
         </ScrollViewer>
         <StackPanel Grid.Row="1" Margin="0,5,0,0">
             <TextBlock Text="Зашифрованный текст" Style="{StaticResource Heading2}" Margin="10,0,0,0" />
-            <TextBlock x:Name="tb_encoded_text" Margin="10" />
+            <TextBlock x:Name="tb_encoded_text" Text="{Binding EncodedText}" Margin="10" FontSize="16" />
         </StackPanel>
     </Grid>
 </UserControl>
