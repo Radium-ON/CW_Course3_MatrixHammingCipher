@@ -35,7 +35,7 @@ namespace CW_Course3_MatrixHammingCipher
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             moduleCatalog.AddModule<HammingCorrectorModule.HammingCorrectorModule>();
-            moduleCatalog.AddModule<CodeMatrixModule.CodeMatrixModule>();
+            moduleCatalog.AddModule<CodeMatrix.CodeMatrixModule>();
             moduleCatalog.AddModule<GilbertMourEncoding.GilbertMourEncodingModule>();
         }
 

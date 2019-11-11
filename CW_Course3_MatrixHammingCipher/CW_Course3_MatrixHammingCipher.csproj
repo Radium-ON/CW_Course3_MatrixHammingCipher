@@ -114,7 +114,7 @@
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CodeMatrixModule\CodeMatrix.csproj">
+    <ProjectReference Include="..\CodeMatrix\CodeMatrix.csproj">
       <Project>{5854fe10-c954-4540-82f1-a2742392eda8}</Project>
       <Name>CodeMatrix</Name>
     </ProjectReference>

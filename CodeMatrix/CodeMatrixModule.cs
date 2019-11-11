@@ -1,9 +1,9 @@
-﻿using CodeMatrixModule.Views;
+﻿using CodeMatrix.Views;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
 
-namespace CodeMatrixModule
+namespace CodeMatrix
 {
     public class CodeMatrixModule : IModule
     {
