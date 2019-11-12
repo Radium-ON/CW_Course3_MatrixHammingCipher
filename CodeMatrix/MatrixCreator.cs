@@ -48,11 +48,17 @@ namespace CodeMatrix
             return Tmatrix;
         }
 
-        public byte[,] GetCodeConstructionsFromCipher(string cipher)
+        public byte[][] GetCodeConstructionsFromCipher(string cipher)
         {
             var blocks = SplitIntoBlocks(cipher, 4);
             var blockLength = blocks[0].Length;
-            var codematrix = new byte[blocks.Length,8];
+            var codematrix = new byte[blocks.Length][];
+
+            for (var i = 0; i < blocks.Length; i++)
+            {
+                codematrix[i]=new byte[8];
+            }
+            
             //get block, parse it to byte array and * matrix
             for (var block = 0; block < blocks.Length; block++)
             {
@@ -60,17 +66,17 @@ namespace CodeMatrix
                 for (var bit = 0; bit < blockLength; bit++)
                 {
                     var b = blocks[block];
-                    bitblock[bit] = (byte) char.GetNumericValue(b[bit]);
+                    bitblock[bit] = (byte)char.GetNumericValue(b[bit]);
                 }
 
                 var vector = MultiplyVectorByGMatrix(bitblock, GeneratingMatrix);
 
                 for (var i = 0; i < vector.Length; i++)
                 {
-                    codematrix[block, i] = vector[i];
+                    codematrix[block][i] = vector[i];
                 }
             }
-            
+
             return codematrix;
         }
 
