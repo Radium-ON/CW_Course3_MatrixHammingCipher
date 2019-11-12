@@ -34,9 +34,9 @@ namespace MatrixHammingCipher
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            moduleCatalog.AddModule<HammingCorrectorModule.HammingCorrectorModule>();
-            moduleCatalog.AddModule<CodeMatrix.CodeMatrixModule>();
             moduleCatalog.AddModule<GilbertMourEncoding.GilbertMourEncodingModule>();
+            moduleCatalog.AddModule<CodeMatrix.CodeMatrixModule>();
+            //moduleCatalog.AddModule<HammingCorrectorModule.HammingCorrectorModule>();
         }
 
         #endregion
