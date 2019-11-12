@@ -14,11 +14,12 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Text="Кодовые конструкции" Style="{StaticResource Heading2}"/>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding HammingCodeConstructions}">
+        <DataGrid Grid.Row="1" ItemsSource="{Binding HCodesCollection}"
+                  AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <mui:DataGridTextColumn Binding="{Binding InfoBits}" Header="Информация" Width="Auto"/>
-                <mui:DataGridTextColumn Binding="{Binding CheckBits}" Header="Проверка" Width="Auto"/>
-                <mui:DataGridTextColumn Binding="{Binding ParityBit}" Header="⨁" Width="Auto"/>
+                <mui:DataGridTextColumn Binding="{Binding Path=InfoBits}" Header="Информация" Width="Auto"/>
+                <mui:DataGridTextColumn Binding="{Binding Path=CheckBits}" Header="Проверка" Width="Auto"/>
+                <mui:DataGridTextColumn Binding="{Binding Path=ParityBit}" Header="⨁" Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

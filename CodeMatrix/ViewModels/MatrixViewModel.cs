@@ -36,7 +36,13 @@ namespace CodeMatrix.ViewModels
         private void EncodedCipherRecieved(string encodedText)
         {
             var matrix = MatrixCreator.GetCodeConstructionsFromCipher(encodedText);
-            
+            var coll = new List<HCodeBlockViewModel>();
+            foreach (var constr in matrix)
+            {
+                coll.Add(new HCodeBlockViewModel(constr));
+            }
+
+            HCodesCollection = new ObservableCollection<HCodeBlockViewModel>(coll);
         }
     }
 }
