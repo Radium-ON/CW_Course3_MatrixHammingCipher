@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GilbertMourEncoding.Models;
+using MatrixHammingCipher.Core;
+using Prism.Events;
 
 namespace GilbertMourEncoding.ViewModels
 {
@@ -20,8 +22,9 @@ namespace GilbertMourEncoding.ViewModels
 
         #endregion
 
-        public GilbertViewModel()
+        public GilbertViewModel(IEventAggregator ea)
         {
+            _eventAggregator = ea;
             MourCodingCommand = new DelegateCommand(Coding, CanCoding).ObservesProperty(() => EnterText);
             MourCollection = new ObservableCollection<GilbertMourCodeAlgorithm.CodeEntry>();
         }
@@ -36,6 +39,8 @@ namespace GilbertMourEncoding.ViewModels
             var mour = new GilbertMourCodeAlgorithm(CharStatsCollection);
             MourCollection = new ObservableCollection<GilbertMourCodeAlgorithm.CodeEntry>(mour.CodeEntries);
             EncodedText = GetCipherFromEnterText(mour.CodeEntries, EnterText);
+            //опубликована посылка со строкой шифротекста
+            _eventAggregator.GetEvent<EnterTextEncodedEvent>().Publish(EncodedText);
         }
 
         private string GetCipherFromEnterText(List<GilbertMourCodeAlgorithm.CodeEntry> mourCodeEntries, string enterText)
@@ -57,6 +62,7 @@ namespace GilbertMourEncoding.ViewModels
         }
 
         #region Backing Fields
+        IEventAggregator _eventAggregator;
         private string _enterText;
         private ObservableCollection<CodingStepsTable.TableRecord> _charStatsCollection;
         private bool _isTextEntered;

@@ -82,7 +82,12 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MatrixHammingCipher.Core\MatrixHammingCipher.Core.csproj">
+      <Project>{a3aab72d-2bb6-4a92-bfd1-43ed1b5c8d76}</Project>
+      <Name>MatrixHammingCipher.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Views\MatrixView.xaml">
       <SubType>Designer</SubType>
