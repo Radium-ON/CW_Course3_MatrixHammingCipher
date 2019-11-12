@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GilbertMourEncoding", "Gilb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeMatrix.Tests", "CodeMatrix.Tests\CodeMatrix.Tests.csproj", "{C1F8BB4A-9736-4C70-A802-B3B8ED25D395}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixHammingCipher.Core", "MatrixHammingCipher.Core\MatrixHammingCipher.Core.csproj", "{A3AAB72D-2BB6-4A92-BFD1-43ED1B5C8D76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C1F8BB4A-9736-4C70-A802-B3B8ED25D395}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1F8BB4A-9736-4C70-A802-B3B8ED25D395}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1F8BB4A-9736-4C70-A802-B3B8ED25D395}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3AAB72D-2BB6-4A92-BFD1-43ED1B5C8D76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3AAB72D-2BB6-4A92-BFD1-43ED1B5C8D76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3AAB72D-2BB6-4A92-BFD1-43ED1B5C8D76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3AAB72D-2BB6-4A92-BFD1-43ED1B5C8D76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
