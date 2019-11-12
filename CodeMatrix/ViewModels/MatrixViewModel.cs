@@ -1,19 +1,31 @@
-﻿using Prism.Mvvm;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
+using Prism.Mvvm;
 
 namespace CodeMatrix.ViewModels
 {
     public class MatrixViewModel : BindableBase
     {
-        private string _message;
-        public string Message
-        {
-            get { return _message; }
-            set { SetProperty(ref _message, value); }
-        }
-
         public MatrixViewModel()
         {
-            Message = "View CodeMatrix from your Prism Module";
+            HCodesCollection=new ObservableCollection<HCodeBlockViewModel>();
+        }
+
+        #region Backing Fields
+        private ObservableCollection<HCodeBlockViewModel> _hcodesCollection;
+
+        
+
+        #endregion
+        public ObservableCollection<HCodeBlockViewModel> HCodesCollection
+        {
+            get { return _hcodesCollection; }
+            set { SetProperty(ref _hcodesCollection, value); }
+        }
+
+        private void MatrixRecieved(byte[,] matrix)
+        {
+
         }
     }
 }

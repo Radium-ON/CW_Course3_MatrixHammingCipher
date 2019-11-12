@@ -67,6 +67,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\HCodeBlockViewModel.cs" />
     <Compile Include="ViewModels\MatrixViewModel.cs" />
     <Compile Include="Views\MatrixView.xaml.cs">
       <DependentUpon>MatrixView.xaml</DependentUpon>
