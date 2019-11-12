@@ -8,8 +8,8 @@
     <ProjectGuid>{CA5F7B3D-7849-4479-BF0C-F685E7ADDC15}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CW_Course3_MatrixHammingCipher</RootNamespace>
-    <AssemblyName>CW_Course3_MatrixHammingCipher</AssemblyName>
+    <RootNamespace>MatrixHammingCipher</RootNamespace>
+    <AssemblyName>MatrixHammingCipher</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>

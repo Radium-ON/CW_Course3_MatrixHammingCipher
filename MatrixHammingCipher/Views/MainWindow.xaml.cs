@@ -1,6 +1,6 @@
 ﻿using FirstFloor.ModernUI.Windows.Controls;
 
-namespace CW_Course3_MatrixHammingCipher.Views
+namespace MatrixHammingCipher.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

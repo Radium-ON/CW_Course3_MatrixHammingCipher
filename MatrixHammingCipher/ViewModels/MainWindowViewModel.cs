@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CW_Course3_MatrixHammingCipher.ViewModels
+namespace MatrixHammingCipher.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {

@@ -6,14 +6,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using CommonServiceLocator;
-using CW_Course3_MatrixHammingCipher.Views;
+using MatrixHammingCipher.Views;
 using Prism;
 using Prism.Ioc;
 using Prism.Unity;
 using Prism.Modularity;
 
 
-namespace CW_Course3_MatrixHammingCipher
+namespace MatrixHammingCipher
 {
     /// <summary>
     /// Interaction logic for App.xaml

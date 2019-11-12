@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CW_Course3_MatrixHammingCipher", "CW_Course3_MatrixHammingCipher\CW_Course3_MatrixHammingCipher.csproj", "{CA5F7B3D-7849-4479-BF0C-F685E7ADDC15}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixHammingCipher", "MatrixHammingCipher\MatrixHammingCipher.csproj", "{CA5F7B3D-7849-4479-BF0C-F685E7ADDC15}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeMatrix", "CodeMatrix\CodeMatrix.csproj", "{5854FE10-C954-4540-82F1-A2742392EDA8}"
 EndProject
