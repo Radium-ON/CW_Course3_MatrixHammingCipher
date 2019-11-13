@@ -42,7 +42,14 @@ namespace CodeMatrix.ViewModels
         public ObservableCollection<byte[]> GeneratingCodesCollection
         {
             get { return _generatingCodesCollection; }
-            set { SetProperty(ref _generatingCodesCollection, value); }
+            set { SetProperty(ref _generatingCodesCollection, value,OnGenMatrixChanged); }
+        }
+
+        private void OnGenMatrixChanged()
+        {
+            MatrixCreator = new MatrixCreator(ConvertListArraysToTwoDimArray(GeneratingCodesCollection.ToList()));
+            CheckCodesCollection=new ObservableCollection<byte[]>
+                (ConvertTwoDimArrayToListArrays(MatrixCreator.HammingCodesMatrix));
         }
 
         public ObservableCollection<byte[]> CheckCodesCollection
@@ -79,6 +86,21 @@ namespace CodeMatrix.ViewModels
             }
 
             return list;
+        }
+        private byte[,] ConvertListArraysToTwoDimArray(List<byte[]> list)
+        {
+            var rows = list.Count;
+            var columns = list[0].Length;
+            var matrix = new byte[rows,columns];
+            for (var row = 0; row < rows; row++)
+            {
+                for (var col = 0; col < columns; col++)
+                {
+                    matrix[row, col]=list[row][col];
+                }
+            }
+
+            return matrix;
         }
     }
 }

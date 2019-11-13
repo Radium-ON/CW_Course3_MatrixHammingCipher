@@ -18,7 +18,7 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBox Text="{Binding ., UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Text="{Binding ., UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
@@ -48,7 +48,7 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <TextBlock Text="Проверочная матрица" Style="{StaticResource Heading2}" />
-                    <DataGrid Grid.Row="1" ItemsSource="{Binding CheckCodesCollection}" IsReadOnly="True"
+                    <DataGrid Grid.Row="1" ItemsSource="{Binding CheckCodesCollection, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"
                               AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn CellTemplate="{StaticResource matrix_view_template}" />
@@ -63,7 +63,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Text="Кодовые конструкции" Style="{StaticResource Heading2}" />
                     <DataGrid Grid.Row="1" ItemsSource="{Binding HCodesCollection}"
-                              AutoGenerateColumns="False" IsReadOnly="True">
+                              AutoGenerateColumns="False" IsReadOnly="True" MaxHeight="200">
                         <DataGrid.Columns>
                             <mui:DataGridTextColumn Binding="{Binding InfoBits}" Header="Информация" Width="Auto" />
                             <mui:DataGridTextColumn Binding="{Binding CheckBits}" Header="Проверка" Width="Auto" />
