@@ -31,13 +31,8 @@
                         CanUserAddRows="False"
                         IsReadOnly="True">
                         <DataGrid.Columns>
-                            <mui:DataGridTextColumn Binding="{Binding Xi}" Header="Xi" />
-                            <mui:DataGridTextColumn Binding="{Binding Pxi}" Header="Pxi" />
-                            <mui:DataGridTextColumn Binding="{Binding Q}" Header="Q" />
-                            <mui:DataGridTextColumn Binding="{Binding Sigma}" Header="Sigma" />
-                            <mui:DataGridTextColumn Binding="{Binding Li}" Header="Length i" />
-                            <mui:DataGridTextColumn Binding="{Binding SigmaBinary}" Header="[Sigma]2" />
-                            <mui:DataGridTextColumn Binding="{Binding SigmaLimit}" Header="Код" />
+                            <mui:DataGridTextColumn Binding="{Binding Xi}" Header="Символ"/>
+                            <mui:DataGridTextColumn Binding="{Binding SigmaLimit}" Header="Код"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
