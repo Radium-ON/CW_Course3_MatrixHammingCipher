@@ -22,9 +22,8 @@
             <TextBlock Style="{StaticResource Heading1}" Text="Код Хэмминга" />
             <TextBlock Style="{StaticResource ModernWindowTitle}" Text="матричный метод" />
         </StackPanel>
-        <ContentControl Grid.Column="0" prism:RegionManager.RegionName="StringEncodingRegion" Grid.Row="1"
-                        Grid.ColumnSpan="2" />
-        <ContentControl Grid.Column="0" prism:RegionManager.RegionName="MatrixRegion" Grid.Row="2" />
+        <ContentControl Grid.Column="0" prism:RegionManager.RegionName="StringEncodingRegion" Grid.Row="1"/>
+        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="MatrixRegion" Grid.Row="1" />
         <ContentControl Grid.Column="1" prism:RegionManager.RegionName="ErrorsCorrectionRegion" Grid.Row="2" />
     </Grid>
 </mui:ModernWindow>
