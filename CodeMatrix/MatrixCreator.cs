@@ -89,8 +89,9 @@ namespace CodeMatrix
                 var xor = bitblock.Select((t, bit) => t * gmatrix[bit, column]).Sum();
                 codeconstr[column + 1] = (byte)(xor % 2);
             }
-            //xor check bits
-            codeconstr[0] = (byte)(codeconstr[5] ^ codeconstr[6] ^ codeconstr[7]);
+            //xor all bits
+            var allxor = codeconstr.Aggregate(0, (current, b) => current ^ b);
+            codeconstr[0] = (byte) allxor;
             return codeconstr;
         }
 
