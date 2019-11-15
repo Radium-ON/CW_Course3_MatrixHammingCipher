@@ -2,7 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using MatrixHammingCipher.Core;
+using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 
@@ -14,18 +16,32 @@ namespace CodeMatrix.ViewModels
         {
             _eventAggregator = ea;
             _eventAggregator.GetEvent<EnterTextEncodedEvent>().Subscribe(EncodedCipherRecieved);
-            MatrixCreator=new MatrixCreator();
-            GeneratingCodesCollection = new ObservableCollection<byte[]>
+
+            GMatrixEditCommand = new DelegateCommand<DataGridCellEditEndingEventArgs>(OnCellEdited);
+
+            MatrixCreator = new MatrixCreator();
+            GeneratingCodesCollection = new ObservableCollection<ObservableCollection<byte>>
                 (ConvertTwoDimArrayToListArrays(MatrixCreator.GeneratingMatrix));
-            CheckCodesCollection = new ObservableCollection<byte[]>
+            CheckCodesCollection = new ObservableCollection<ObservableCollection<byte>>
                 (ConvertTwoDimArrayToListArrays(MatrixCreator.HammingCodesMatrix));
         }
+
+        private bool CanCellEdit(DataGridCellEditEndingEventArgs args)
+        {
+            return args != null;
+        }
+
+        private void OnCellEdited(DataGridCellEditEndingEventArgs e)
+        {
+            OnGenMatrixChanged();
+        }
+
 
         #region Backing Fields
         private ObservableCollection<HCodeBlockViewModel> _hcodesCollection;
         private IEventAggregator _eventAggregator;
-        private ObservableCollection<byte[]> _generatingCodesCollection;
-        private ObservableCollection<byte[]> _checkCodesCollection;
+        private ObservableCollection<ObservableCollection<byte>> _generatingCodesCollection;
+        private ObservableCollection<ObservableCollection<byte>> _checkCodesCollection;
 
 
 
@@ -39,20 +55,20 @@ namespace CodeMatrix.ViewModels
             set { SetProperty(ref _hcodesCollection, value); }
         }
 
-        public ObservableCollection<byte[]> GeneratingCodesCollection
+        public ObservableCollection<ObservableCollection<byte>> GeneratingCodesCollection
         {
             get { return _generatingCodesCollection; }
-            set { SetProperty(ref _generatingCodesCollection, value,OnGenMatrixChanged); }
+            set { SetProperty(ref _generatingCodesCollection, value); }
         }
 
         private void OnGenMatrixChanged()
         {
-            MatrixCreator = new MatrixCreator(ConvertListArraysToTwoDimArray(GeneratingCodesCollection.ToList()));
-            CheckCodesCollection=new ObservableCollection<byte[]>
+            MatrixCreator = new MatrixCreator(ConvertListArraysToTwoDimArray(GeneratingCodesCollection));
+            CheckCodesCollection = new ObservableCollection<ObservableCollection<byte>>
                 (ConvertTwoDimArrayToListArrays(MatrixCreator.HammingCodesMatrix));
         }
 
-        public ObservableCollection<byte[]> CheckCodesCollection
+        public ObservableCollection<ObservableCollection<byte>> CheckCodesCollection
         {
             get { return _checkCodesCollection; }
             set { SetProperty(ref _checkCodesCollection, value); }
@@ -70,37 +86,41 @@ namespace CodeMatrix.ViewModels
             HCodesCollection = new ObservableCollection<HCodeBlockViewModel>(coll);
         }
 
-        private List<byte[]> ConvertTwoDimArrayToListArrays(byte[,] matrix)
+        private ObservableCollection<ObservableCollection<byte>> ConvertTwoDimArrayToListArrays(byte[,] matrix)
         {
             var rows = matrix.GetLength(0);
             var columns = matrix.GetLength(1);
-            var list = new List<byte[]>();
+            var list = new ObservableCollection<ObservableCollection<byte>>();
             for (var row = 0; row < rows; row++)
             {
-                var line = new byte[columns];
+                var line = new ObservableCollection<byte>();
                 for (var col = 0; col < columns; col++)
                 {
-                    line[col] = matrix[row, col];
+                    line.Add(matrix[row, col]);
                 }
                 list.Add(line);
             }
 
             return list;
         }
-        private byte[,] ConvertListArraysToTwoDimArray(List<byte[]> list)
+        private byte[,] ConvertListArraysToTwoDimArray(ObservableCollection<ObservableCollection<byte>> list)
         {
             var rows = list.Count;
-            var columns = list[0].Length;
-            var matrix = new byte[rows,columns];
+            var columns = list[0].Count;
+            var matrix = new byte[rows, columns];
             for (var row = 0; row < rows; row++)
             {
                 for (var col = 0; col < columns; col++)
                 {
-                    matrix[row, col]=list[row][col];
+                    matrix[row, col] = list[row][col];
                 }
             }
 
             return matrix;
         }
+
+        #region DelegateCommands
+        public DelegateCommand<DataGridCellEditEndingEventArgs> GMatrixEditCommand { get; private set; }
+        #endregion
     }
 }

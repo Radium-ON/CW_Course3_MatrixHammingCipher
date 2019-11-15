@@ -7,23 +7,9 @@
              d:DesignHeight="300" d:DesignWidth="300"
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:dgbind="http://gu.se/DataGrid2D"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              prism:ViewModelLocator.AutoWireViewModel="True">
-    <UserControl.Resources>
-        <DataTemplate x:Key="matrix_view_template">
-            <ListView ItemsSource="{Binding}">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextBox Text="{Binding ., UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </DataTemplate>
-    </UserControl.Resources>
     <Grid>
         <ScrollViewer>
             <WrapPanel>
@@ -33,12 +19,13 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <TextBlock Text="Порождающая матрица" Style="{StaticResource Heading2}" />
-                    <DataGrid Grid.Row="1"
-                              ItemsSource="{Binding GeneratingCodesCollection,UpdateSourceTrigger=PropertyChanged}"
-                              AutoGenerateColumns="False">
-                        <DataGrid.Columns>
-                            <DataGridTemplateColumn CellTemplate="{StaticResource matrix_view_template}" />
-                        </DataGrid.Columns>
+                    <DataGrid Grid.Row="1" HeadersVisibility="None"
+                              dgbind:ItemsSource.RowsSource="{Binding GeneratingCodesCollection}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="CellEditEnding">
+                                <prism:InvokeCommandAction Command="{Binding GMatrixEditCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </DataGrid>
                 </Grid>
 
@@ -48,12 +35,7 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <TextBlock Text="Проверочная матрица" Style="{StaticResource Heading2}" />
-                    <DataGrid Grid.Row="1" ItemsSource="{Binding CheckCodesCollection, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"
-                              AutoGenerateColumns="False">
-                        <DataGrid.Columns>
-                            <DataGridTemplateColumn CellTemplate="{StaticResource matrix_view_template}" />
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    <DataGrid Grid.Row="1" dgbind:ItemsSource.RowsSource="{Binding CheckCodesCollection}" HeadersVisibility="None" IsReadOnly="True"/>
                 </Grid>
 
                 <Grid x:Name="grid_hcodes_table" Margin="10,0,0,0">
