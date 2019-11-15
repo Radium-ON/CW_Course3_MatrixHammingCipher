@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HammingCorrectorModule.Properties
+namespace HammingCorrector.Properties
 {
 
 

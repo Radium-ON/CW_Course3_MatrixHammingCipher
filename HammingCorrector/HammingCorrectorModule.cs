@@ -1,9 +1,9 @@
-﻿using HammingCorrectorModule.Views;
+﻿using HammingCorrector.Views;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
 
-namespace HammingCorrectorModule
+namespace HammingCorrector
 {
     public class HammingCorrectorModule : IModule
     {

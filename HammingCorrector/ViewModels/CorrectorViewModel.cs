@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HammingCorrectorModule.ViewModels
+namespace HammingCorrector.ViewModels
 {
     public class CorrectorViewModel : BindableBase
     {

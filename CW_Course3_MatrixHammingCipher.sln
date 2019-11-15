@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixHammingCipher", "Matr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeMatrix", "CodeMatrix\CodeMatrix.csproj", "{5854FE10-C954-4540-82F1-A2742392EDA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HammingCorrector", "HammingCorrectorModule\HammingCorrector.csproj", "{B871C199-CFBE-4F81-ACAA-1BA2748311CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HammingCorrector", "HammingCorrector\HammingCorrector.csproj", "{B871C199-CFBE-4F81-ACAA-1BA2748311CB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GilbertMourEncoding", "GilbertMourEncoding\GilbertMourEncoding.csproj", "{556CF0B8-8E63-478F-9755-8486E8B65072}"
 EndProject
