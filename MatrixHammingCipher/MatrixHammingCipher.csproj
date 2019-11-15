@@ -125,7 +125,7 @@
       <Project>{556cf0b8-8e63-478f-9755-8486e8b65072}</Project>
       <Name>GilbertMourEncoding</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HammingCorrectorModule\HammingCorrector.csproj">
+    <ProjectReference Include="..\HammingCorrector\HammingCorrector.csproj">
       <Project>{b871c199-cfbe-4f81-acaa-1ba2748311cb}</Project>
       <Name>HammingCorrector</Name>
     </ProjectReference>

@@ -84,6 +84,7 @@ namespace CodeMatrix.ViewModels
             }
 
             HCodesCollection = new ObservableCollection<HCodeBlockViewModel>(coll);
+            _eventAggregator.GetEvent<HammingCodeSentEvent>().Publish(matrix);
         }
 
         private ObservableCollection<ObservableCollection<byte>> ConvertTwoDimArrayToListArrays(byte[,] matrix)
