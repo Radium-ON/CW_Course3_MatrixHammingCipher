@@ -4,4 +4,7 @@
     <Style TargetType="GridViewColumnHeader" BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
         <Setter Property="HorizontalAlignment" Value="Left" />
     </Style>
+
+    <StreamGeometry x:Key="path_main_icon">F1 M 18,23L 58,23L 58,53L 18,53L 18,23 Z M 22,49L 54,49L 54,31L 38,43L 22,31L 22,49 Z M 23,27L 38,38L 53,27L 23,27 Z </StreamGeometry>
+
 </ResourceDictionary>

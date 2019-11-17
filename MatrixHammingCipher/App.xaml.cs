@@ -36,7 +36,7 @@ namespace MatrixHammingCipher
         {
             moduleCatalog.AddModule<GilbertMourEncoding.GilbertMourEncodingModule>();
             moduleCatalog.AddModule<CodeMatrix.CodeMatrixModule>();
-            //moduleCatalog.AddModule<HammingCorrectorModule.HammingCorrectorModule>();
+            moduleCatalog.AddModule<HammingCorrector.HammingCorrectorModule>();
         }
 
         #endregion

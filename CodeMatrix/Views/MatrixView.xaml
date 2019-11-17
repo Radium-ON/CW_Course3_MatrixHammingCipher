@@ -42,6 +42,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
                     <TextBlock Text="Кодовые конструкции" Style="{StaticResource Heading2}" />
                     <DataGrid Grid.Row="1" ItemsSource="{Binding HCodesCollection}"
@@ -52,6 +53,8 @@
                             <mui:DataGridTextColumn Binding="{Binding ParityBit}" Header="⨁" Width="Auto" />
                         </DataGrid.Columns>
                     </DataGrid>
+                    <mui:ModernButton Grid.Row="2" IconData="{StaticResource path_main_icon}" EllipseDiameter="35" IconHeight="22" IconWidth="22"
+                                  Command="{Binding SendMessageCommand}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,0"/>
                 </Grid>
             </WrapPanel>
         </ScrollViewer>

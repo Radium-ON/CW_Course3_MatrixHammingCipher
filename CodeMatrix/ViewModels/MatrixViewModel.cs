@@ -18,12 +18,18 @@ namespace CodeMatrix.ViewModels
             _eventAggregator.GetEvent<EnterTextEncodedEvent>().Subscribe(EncodedCipherRecieved);
 
             GMatrixEditCommand = new DelegateCommand<DataGridCellEditEndingEventArgs>(OnCellEdited);
+            SendMessageCommand=new DelegateCommand(SendMessage);
 
             MatrixCreator = new MatrixCreator();
             GeneratingCodesCollection = new ObservableCollection<ObservableCollection<byte>>
                 (ConvertTwoDimArrayToListArrays(MatrixCreator.GeneratingMatrix));
             CheckCodesCollection = new ObservableCollection<ObservableCollection<byte>>
                 (ConvertTwoDimArrayToListArrays(MatrixCreator.HammingCodesMatrix));
+        }
+
+        private void SendMessage()
+        {
+            _eventAggregator.GetEvent<HammingCodeSentEvent>().Publish(_matrix);
         }
 
         private bool CanCellEdit(DataGridCellEditEndingEventArgs args)
@@ -40,6 +46,7 @@ namespace CodeMatrix.ViewModels
         #region Backing Fields
         private ObservableCollection<HCodeBlockViewModel> _hcodesCollection;
         private IEventAggregator _eventAggregator;
+        private byte[][] _matrix;
         private ObservableCollection<ObservableCollection<byte>> _generatingCodesCollection;
         private ObservableCollection<ObservableCollection<byte>> _checkCodesCollection;
 
@@ -76,15 +83,14 @@ namespace CodeMatrix.ViewModels
 
         private void EncodedCipherRecieved(string encodedText)
         {
-            var matrix = MatrixCreator.GetCodeConstructionsFromCipher(encodedText);
+            _matrix = MatrixCreator.GetCodeConstructionsFromCipher(encodedText);
             var coll = new List<HCodeBlockViewModel>();
-            foreach (var constr in matrix)
+            foreach (var constr in _matrix)
             {
                 coll.Add(new HCodeBlockViewModel(constr));
             }
 
             HCodesCollection = new ObservableCollection<HCodeBlockViewModel>(coll);
-            _eventAggregator.GetEvent<HammingCodeSentEvent>().Publish(matrix);
         }
 
         private ObservableCollection<ObservableCollection<byte>> ConvertTwoDimArrayToListArrays(byte[,] matrix)
@@ -122,6 +128,7 @@ namespace CodeMatrix.ViewModels
 
         #region DelegateCommands
         public DelegateCommand<DataGridCellEditEndingEventArgs> GMatrixEditCommand { get; private set; }
+        public DelegateCommand SendMessageCommand { get; private set; }
         #endregion
     }
 }
