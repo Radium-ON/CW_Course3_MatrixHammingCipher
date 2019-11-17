@@ -46,11 +46,11 @@
                     </Grid.RowDefinitions>
                     <TextBlock Text="Кодовые конструкции" Style="{StaticResource Heading2}" />
                     <DataGrid Grid.Row="1" ItemsSource="{Binding HCodesCollection}"
-                              AutoGenerateColumns="False" IsReadOnly="True" MaxHeight="200">
+                              AutoGenerateColumns="False" IsReadOnly="True" MaxHeight="200" CanUserSortColumns="False">
                         <DataGrid.Columns>
+                            <mui:DataGridTextColumn Binding="{Binding ParityBit}" Header="⨁" Width="Auto" />
                             <mui:DataGridTextColumn Binding="{Binding InfoBits}" Header="Информация" Width="Auto" />
                             <mui:DataGridTextColumn Binding="{Binding CheckBits}" Header="Проверка" Width="Auto" />
-                            <mui:DataGridTextColumn Binding="{Binding ParityBit}" Header="⨁" Width="Auto" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <mui:ModernButton Grid.Row="2" IconData="{StaticResource path_main_icon}" EllipseDiameter="35" IconHeight="22" IconWidth="22"

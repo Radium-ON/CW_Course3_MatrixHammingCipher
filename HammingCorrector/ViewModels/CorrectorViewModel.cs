@@ -14,29 +14,23 @@ namespace HammingCorrector.ViewModels
     public class CorrectorViewModel : BindableBase
     {
         #region Backing Fields
-        private IEventAggregator _eventAggregator;
+        private readonly IEventAggregator _eventAggregator;
 
-        private string _message;
-        private ObservableCollection<byte[]> _hcodesCollection;
+        private ObservableCollection<ObservableCollection<byte>> _hcodesCollection;
 
-        
+
 
         #endregion
 
-        public string Message
-        {
-            get { return _message; }
-            set { SetProperty(ref _message, value); }
-        }
+
 
         public CorrectorViewModel(IEventAggregator ea)
         {
             _eventAggregator = ea;
             _eventAggregator.GetEvent<HammingCodeSentEvent>().Subscribe(HammingCodesRecieved);
-            Message = "View HammingCorrector from your Prism Module";
         }
 
-        public ObservableCollection<byte[]> HCodesCollection
+        public ObservableCollection<ObservableCollection<byte>> HCodesCollection
         {
             get { return _hcodesCollection; }
             set { SetProperty(ref _hcodesCollection, value); }
@@ -44,13 +38,18 @@ namespace HammingCorrector.ViewModels
 
         private void HammingCodesRecieved(byte[][] matrix)
         {
-            var coll = new List<byte[]>();
+            var collection = new ObservableCollection<ObservableCollection<byte>>();
             foreach (var constr in matrix)
             {
-                coll.Add(constr);
+                var line = new ObservableCollection<byte>();
+                foreach (var b in constr)
+                {
+                    line.Add(b);
+                }
+                collection.Add(line);
             }
 
-            HCodesCollection = new ObservableCollection<byte[]>(coll);
+            HCodesCollection = collection;
         }
     }
 }

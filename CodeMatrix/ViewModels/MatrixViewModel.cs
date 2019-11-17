@@ -32,11 +32,6 @@ namespace CodeMatrix.ViewModels
             _eventAggregator.GetEvent<HammingCodeSentEvent>().Publish(_matrix);
         }
 
-        private bool CanCellEdit(DataGridCellEditEndingEventArgs args)
-        {
-            return args != null;
-        }
-
         private void OnCellEdited(DataGridCellEditEndingEventArgs e)
         {
             OnGenMatrixChanged();
@@ -45,7 +40,7 @@ namespace CodeMatrix.ViewModels
 
         #region Backing Fields
         private ObservableCollection<HCodeBlockViewModel> _hcodesCollection;
-        private IEventAggregator _eventAggregator;
+        private readonly IEventAggregator _eventAggregator;
         private byte[][] _matrix;
         private ObservableCollection<ObservableCollection<byte>> _generatingCodesCollection;
         private ObservableCollection<ObservableCollection<byte>> _checkCodesCollection;
