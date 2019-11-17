@@ -28,7 +28,12 @@ namespace HammingCorrector.ViewModels
         {
             _eventAggregator = ea;
             _eventAggregator.GetEvent<HammingCodeSentEvent>().Subscribe(HammingCodesRecieved);
-            CorrectCodeCommand=new DelegateCommand(RepairMessageBlocks);
+            CorrectCodeCommand=new DelegateCommand(RepairMessageBlocks,CanRepair).ObservesProperty(() => HCodesCollection);
+        }
+
+        private bool CanRepair()
+        {
+            return !(HCodesCollection == null || HCodesCollection.Count == 0);
         }
 
         private void RepairMessageBlocks()
