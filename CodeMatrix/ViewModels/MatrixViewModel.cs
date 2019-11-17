@@ -18,13 +18,18 @@ namespace CodeMatrix.ViewModels
             _eventAggregator.GetEvent<EnterTextEncodedEvent>().Subscribe(EncodedCipherRecieved);
 
             GMatrixEditCommand = new DelegateCommand<DataGridCellEditEndingEventArgs>(OnCellEdited);
-            SendMessageCommand=new DelegateCommand(SendMessage);
+            SendMessageCommand=new DelegateCommand(SendMessage, CanSend).ObservesProperty(() => HCodesCollection);
 
             MatrixCreator = new MatrixCreator();
             GeneratingCodesCollection = new ObservableCollection<ObservableCollection<byte>>
                 (ConvertTwoDimArrayToListArrays(MatrixCreator.GeneratingMatrix));
             CheckCodesCollection = new ObservableCollection<ObservableCollection<byte>>
                 (ConvertTwoDimArrayToListArrays(MatrixCreator.HammingCodesMatrix));
+        }
+
+        private bool CanSend()
+        {
+            return !(HCodesCollection == null || HCodesCollection.Count == 0);
         }
 
         private void SendMessage()
