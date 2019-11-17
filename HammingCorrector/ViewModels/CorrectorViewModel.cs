@@ -17,8 +17,8 @@ namespace HammingCorrector.ViewModels
         private readonly IEventAggregator _eventAggregator;
 
         private ObservableCollection<ObservableCollection<byte>> _hcodesCollection;
-
-
+        private ObservableCollection<SyndromeViewModel> _syndromeCollection;
+        private ObservableCollection<CorrectionViewModel> _corrections;
 
         #endregion
 
@@ -28,12 +28,30 @@ namespace HammingCorrector.ViewModels
         {
             _eventAggregator = ea;
             _eventAggregator.GetEvent<HammingCodeSentEvent>().Subscribe(HammingCodesRecieved);
+            CorrectCodeCommand=new DelegateCommand(RepairMessageBlocks);
+        }
+
+        private void RepairMessageBlocks()
+        {
+            
         }
 
         public ObservableCollection<ObservableCollection<byte>> HCodesCollection
         {
             get { return _hcodesCollection; }
             set { SetProperty(ref _hcodesCollection, value); }
+        }
+
+        public ObservableCollection<SyndromeViewModel> SyndromeCollection
+        {
+            get { return _syndromeCollection; }
+            set { SetProperty(ref _syndromeCollection, value); }
+        }
+
+        public ObservableCollection<CorrectionViewModel> Corrections
+        {
+            get { return _corrections; }
+            set { SetProperty(ref _corrections, value); }
         }
 
         private void HammingCodesRecieved(byte[][] matrix)
@@ -51,5 +69,11 @@ namespace HammingCorrector.ViewModels
 
             HCodesCollection = collection;
         }
+
+        #region DelegateCommands
+
+        public DelegateCommand CorrectCodeCommand { get; private set; }
+
+        #endregion
     }
 }
