@@ -16,6 +16,8 @@ namespace HammingCorrector.ViewModels
         #region Backing Fields
         private readonly IEventAggregator _eventAggregator;
 
+        private byte[,] _checkCodesMatrix;
+
         private ObservableCollection<ObservableCollection<byte>> _hcodesCollection;
         private ObservableCollection<SyndromeViewModel> _syndromeCollection;
         private ObservableCollection<CorrectionViewModel> _corrections;
@@ -28,7 +30,13 @@ namespace HammingCorrector.ViewModels
         {
             _eventAggregator = ea;
             _eventAggregator.GetEvent<HammingCodeSentEvent>().Subscribe(HammingCodesRecieved);
-            CorrectCodeCommand=new DelegateCommand(RepairMessageBlocks,CanRepair).ObservesProperty(() => HCodesCollection);
+            _eventAggregator.GetEvent<CheckCodesMatrixSentEvent>().Subscribe(CheckMatrixRecieved);
+            CorrectCodeCommand = new DelegateCommand(RepairMessageBlocks, CanRepair).ObservesProperty(() => HCodesCollection);
+        }
+
+        private void CheckMatrixRecieved(byte[,] matrix)
+        {
+            _checkCodesMatrix = matrix;
         }
 
         private bool CanRepair()
@@ -38,7 +46,7 @@ namespace HammingCorrector.ViewModels
 
         private void RepairMessageBlocks()
         {
-            
+
         }
 
         public ObservableCollection<ObservableCollection<byte>> HCodesCollection

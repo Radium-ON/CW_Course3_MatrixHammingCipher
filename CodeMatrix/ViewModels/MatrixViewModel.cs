@@ -35,6 +35,8 @@ namespace CodeMatrix.ViewModels
         private void SendMessage()
         {
             _eventAggregator.GetEvent<HammingCodeSentEvent>().Publish(_matrix);
+            _eventAggregator.GetEvent<CheckCodesMatrixSentEvent>()
+                .Publish(ConvertListArraysToTwoDimArray(CheckCodesCollection));
         }
 
         private void OnCellEdited(DataGridCellEditEndingEventArgs e)
