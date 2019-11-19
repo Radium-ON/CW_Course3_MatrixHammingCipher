@@ -24,7 +24,7 @@ namespace HammingCorrector.ViewModels
 
         #endregion
 
-
+        private HammingRepairTools HammingTools { get; set; }
 
         public CorrectorViewModel(IEventAggregator ea)
         {
@@ -81,6 +81,22 @@ namespace HammingCorrector.ViewModels
             }
 
             HCodesCollection = collection;
+        }
+
+        private byte[,] ConvertListArraysToTwoDimArray(ObservableCollection<ObservableCollection<byte>> list)
+        {
+            var rows = list.Count;
+            var columns = list[0].Count;
+            var matrix = new byte[rows, columns];
+            for (var row = 0; row < rows; row++)
+            {
+                for (var col = 0; col < columns; col++)
+                {
+                    matrix[row, col] = list[row][col];
+                }
+            }
+
+            return matrix;
         }
 
         #region DelegateCommands

@@ -8,9 +8,24 @@ namespace HammingCorrector.ViewModels
 {
     public class SyndromeViewModel : BindableBase
     {
-        public SyndromeViewModel()
+        public SyndromeViewModel(byte[] vector)
         {
+            SOptional = vector.FirstOrDefault();
+            Syndrome = vector.Skip(1).Select(s => s.ToString()).ToString();
+        }
 
+        private byte _soptional;
+        public byte SOptional
+        {
+            get { return _soptional; }
+            set { SetProperty(ref _soptional, value); }
+        }
+
+        private string _syndrome;
+        public string Syndrome
+        {
+            get { return _syndrome; }
+            set { SetProperty(ref _syndrome, value); }
         }
     }
 }
