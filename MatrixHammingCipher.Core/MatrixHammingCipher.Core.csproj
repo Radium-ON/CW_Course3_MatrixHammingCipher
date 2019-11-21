@@ -51,6 +51,7 @@
     <Compile Include="EnterTextEncodedEvent.cs" />
     <Compile Include="HammingCodeSentEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepairedCodeSentEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

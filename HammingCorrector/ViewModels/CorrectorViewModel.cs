@@ -63,6 +63,8 @@ namespace HammingCorrector.ViewModels
             {
                 Corrections.Add(new CorrectionViewModel(slist[i], arrcorrections[i]));
             }
+
+            _eventAggregator.GetEvent<RepairedCodeSentEvent>().Publish(arrcorrections);
         }
 
         public ObservableCollection<ObservableCollection<byte>> HCodesCollection

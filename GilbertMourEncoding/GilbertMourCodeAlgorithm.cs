@@ -33,7 +33,7 @@ namespace GilbertMourEncoding
 
         public GilbertMourCodeAlgorithm()
         {
-            
+
         }
         public GilbertMourCodeAlgorithm(ICollection<CodingStepsTable.TableRecord> stats)
         {
@@ -53,7 +53,7 @@ namespace GilbertMourEncoding
                     new CodeEntry(_chars[i], _probabilities[i],
                         _cumulate[i],
                         _sigmas[i],
-                        _limits[i], Convert.ToString($"0.{ConvertFractToBinaryCode(_sigmas[i],10)}"),
+                        _limits[i], Convert.ToString($"0.{ConvertFractToBinaryCode(_sigmas[i], 10)}"),
                         _codes[i]));
             }
         }
@@ -65,7 +65,7 @@ namespace GilbertMourEncoding
         private List<int> _limits = new List<int>();
         private List<string> _codes = new List<string>();
 
-        public List<CodeEntry> CodeEntries { get; private set; }=new List<CodeEntry>();
+        public List<CodeEntry> CodeEntries { get; private set; } = new List<CodeEntry>();
 
         public string ConvertFractToBinaryCode(double sigma, int limit)
         {

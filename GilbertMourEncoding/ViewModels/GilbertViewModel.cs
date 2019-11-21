@@ -26,7 +26,19 @@ namespace GilbertMourEncoding.ViewModels
         {
             _eventAggregator = ea;
             MourCodingCommand = new DelegateCommand(Coding, CanCoding).ObservesProperty(() => EnterText);
+            MourDecodingCommand=new DelegateCommand(Decoding,CanDecode);
+
             MourCollection = new ObservableCollection<GilbertMourCodeAlgorithm.CodeEntry>();
+        }
+
+        private bool CanDecode()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Decoding()
+        {
+            throw new NotImplementedException();
         }
 
         private bool CanCoding()
@@ -104,6 +116,7 @@ namespace GilbertMourEncoding.ViewModels
 
         #region DelegateCommands
         public ICommand MourCodingCommand { get; private set; }
+        public ICommand MourDecodingCommand { get; private set; }
 
 
         #endregion
