@@ -16,29 +16,38 @@ namespace GilbertMourEncoding.ViewModels
     public class GilbertViewModel : BindableBase
     {
         #region AutoProperties
-        public CodingStepsTable Entropy { get; set; }
+        private CodingStepsTable Entropy { get; set; }
 
+        private GilbertMourCodeAlgorithm MourCoder { get; set; }
 
+        private GilbertMourCodeDecoder MourDecoder { get; set; }
 
         #endregion
 
         public GilbertViewModel(IEventAggregator ea)
         {
             _eventAggregator = ea;
+            _eventAggregator.GetEvent<RepairedCodeSentEvent>().Subscribe(RepairedCodeRecieved);
+
             MourCodingCommand = new DelegateCommand(Coding, CanCoding).ObservesProperty(() => EnterText);
-            MourDecodingCommand=new DelegateCommand(Decoding,CanDecode);
+            MourDecodingCommand = new DelegateCommand(Decoding, CanDecode).ObservesProperty(() => EncodedText);
 
             MourCollection = new ObservableCollection<GilbertMourCodeAlgorithm.CodeEntry>();
         }
 
+        private void RepairedCodeRecieved(List<byte[]> obj)
+        {
+            MourDecoder=new GilbertMourCodeDecoder(MourCoder.CodeEntries);
+            DecodedHammingText = MourDecoder.DecodeHammingCodes(obj);
+        }
+
         private bool CanDecode()
         {
-            throw new NotImplementedException();
+            return !string.IsNullOrEmpty(EncodedText);
         }
 
         private void Decoding()
         {
-            throw new NotImplementedException();
         }
 
         private bool CanCoding()
@@ -48,9 +57,9 @@ namespace GilbertMourEncoding.ViewModels
 
         private void Coding()
         {
-            var mour = new GilbertMourCodeAlgorithm(CharStatsCollection);
-            MourCollection = new ObservableCollection<GilbertMourCodeAlgorithm.CodeEntry>(mour.CodeEntries);
-            EncodedText = GetCipherFromEnterText(mour.CodeEntries, EnterText);
+            MourCoder = new GilbertMourCodeAlgorithm(CharStatsCollection);
+            MourCollection = new ObservableCollection<GilbertMourCodeAlgorithm.CodeEntry>(MourCoder.CodeEntries);
+            EncodedText = GetCipherFromEnterText(MourCoder.CodeEntries, EnterText);
             //опубликована посылка со строкой шифротекста
             _eventAggregator.GetEvent<EnterTextEncodedEvent>().Publish(EncodedText);
         }

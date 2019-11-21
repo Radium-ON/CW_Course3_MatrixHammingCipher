@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GilbertMourCodeAlgorithm.cs" />
+    <Compile Include="GilbertMourCodeDecoder.cs" />
     <Compile Include="GilbertMourEncodingModule.cs" />
     <Compile Include="Models\CodingStepsTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
