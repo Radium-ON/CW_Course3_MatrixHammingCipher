@@ -6,12 +6,12 @@
                   prism:ViewModelLocator.AutoWireViewModel="True"
                   LogoData="{Binding LogoData}"
                   Title="{Binding Title}" IsTitleVisible="True"
-                  MinHeight="300" MinWidth="500" Height="500" Width="800"
+                  MinHeight="300" MinWidth="935" Height="500" Width="800"
                   Style="{StaticResource BlankWindow}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="1.3*"/>
+            <RowDefinition Height="1.5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
