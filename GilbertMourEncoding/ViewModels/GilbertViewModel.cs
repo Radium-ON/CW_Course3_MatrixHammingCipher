@@ -74,7 +74,7 @@ namespace GilbertMourEncoding.ViewModels
         }
 
         #region Backing Fields
-        IEventAggregator _eventAggregator;
+        private readonly IEventAggregator _eventAggregator;
         private string _enterText;
         private ObservableCollection<CodingStepsTable.TableRecord> _charStatsCollection;
         private bool _isTextEntered;

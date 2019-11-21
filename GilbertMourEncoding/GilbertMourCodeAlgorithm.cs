@@ -58,12 +58,12 @@ namespace GilbertMourEncoding
             }
         }
 
-        private List<char> _chars = new List<char>();
-        private List<double> _probabilities = new List<double>();
-        private List<double> _cumulate = new List<double>();
-        private List<double> _sigmas = new List<double>();
-        private List<int> _limits = new List<int>();
-        private List<string> _codes = new List<string>();
+        private readonly List<char> _chars = new List<char>();
+        private readonly List<double> _probabilities = new List<double>();
+        private readonly List<double> _cumulate = new List<double>();
+        private readonly List<double> _sigmas = new List<double>();
+        private readonly List<int> _limits = new List<int>();
+        private readonly List<string> _codes = new List<string>();
 
         public List<CodeEntry> CodeEntries { get; private set; } = new List<CodeEntry>();
 
