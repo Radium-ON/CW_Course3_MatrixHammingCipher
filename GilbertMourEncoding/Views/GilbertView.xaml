@@ -12,7 +12,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <ScrollViewer>
             <StackPanel>
@@ -43,6 +44,10 @@
         <StackPanel Grid.Row="1" Margin="0,5,0,0">
             <TextBlock Text="Зашифрованный текст" Style="{StaticResource Heading2}" Margin="10,0,0,0" />
             <TextBlock x:Name="tb_encoded_text" Text="{Binding EncodedText}" Margin="10" FontSize="16" TextWrapping="Wrap" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Margin="0,5,0,0">
+            <TextBlock Text="Дешифрованный текст" Style="{StaticResource Heading2}" Margin="10,0,0,0" />
+            <TextBlock x:Name="tb_decoded_text" Text="{Binding DecodedHammingText}" Margin="10" FontSize="16" TextWrapping="Wrap" />
         </StackPanel>
     </Grid>
 </UserControl>

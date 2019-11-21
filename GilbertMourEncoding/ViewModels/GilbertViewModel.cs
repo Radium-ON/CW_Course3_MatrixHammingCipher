@@ -80,6 +80,7 @@ namespace GilbertMourEncoding.ViewModels
         private bool _isTextEntered;
         private ObservableCollection<GilbertMourCodeAlgorithm.CodeEntry> _mourCollection;
         private string _encodedText;
+        private string _decodedHammingText;
 
         #endregion
 
@@ -93,6 +94,12 @@ namespace GilbertMourEncoding.ViewModels
         {
             get => _encodedText;
             set => SetProperty(ref _encodedText, value);
+        }
+
+        public string DecodedHammingText
+        {
+            get { return _decodedHammingText; }
+            set { SetProperty(ref _decodedHammingText, value); }
         }
 
         public ObservableCollection<CodingStepsTable.TableRecord> CharStatsCollection
