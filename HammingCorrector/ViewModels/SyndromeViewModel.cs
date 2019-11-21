@@ -11,7 +11,7 @@ namespace HammingCorrector.ViewModels
         public SyndromeViewModel(byte[] vector)
         {
             SOptional = vector.FirstOrDefault();
-            Syndrome = vector.Skip(1).Select(s => s.ToString()).ToString();
+            Syndrome = string.Join(" ", vector.Skip(1));
         }
 
         private byte _soptional;

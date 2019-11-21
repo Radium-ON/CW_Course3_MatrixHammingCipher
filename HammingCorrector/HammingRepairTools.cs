@@ -76,7 +76,7 @@ namespace HammingCorrector
         /// <returns></returns>
         public List<byte[]> GetRepairedConstructions(IList<byte[]> constructions, IList<byte[]> syndromes)
         {
-            if (constructions.Count!=syndromes.Count)
+            if (constructions.Count != syndromes.Count)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -84,23 +84,28 @@ namespace HammingCorrector
             var repairedConstructions = new List<byte[]>();
 
             var constructionsAndSyndromes = constructions.Zip(syndromes, (c, s) => new { Construction = c, Syndrome = s });
-            
+
             foreach (var cs in constructionsAndSyndromes)
             {
                 if (CheckSyndromeForError(cs.Syndrome))
                 {
                     var errorBit = FindErrorBitNumber(cs.Syndrome);
-                    if (errorBit==-1)
+                    if (errorBit == -1)
                     {
                         repairedConstructions.Add(cs.Construction);
                     }
                     else
                     {
                         var _ = cs.Construction[errorBit] == 0 ? 1 : 0;
-                        cs.Construction[errorBit] = (byte) _;
+                        cs.Construction[errorBit] = (byte)_;
                         repairedConstructions.Add(cs.Construction);
                     }
                 }
+                else
+                {
+                    repairedConstructions.Add(cs.Construction);
+                }
+
             }
 
             return repairedConstructions;
@@ -128,18 +133,17 @@ namespace HammingCorrector
         private int FindErrorBitNumber(byte[] optionalSyndrome)
         {
             var num = -1;
-            var syndrome = optionalSyndrome.Skip(1).ToArray();
+            
+            var bitcolumn = new byte[optionalSyndrome.Length];
 
-            var bitcolumn = new byte[syndrome.Length];
-
-            for (var col = 0; col < HammingCodesMatrix.GetLength(1); col++)
+            for (var col = 0; col < ExtendedMatrix.GetLength(1); col++)
             {
-                for (var row = 0; row < HammingCodesMatrix.GetLength(0); row++)
+                for (var row = 0; row < ExtendedMatrix.GetLength(0); row++)
                 {
-                    bitcolumn[row] = HammingCodesMatrix[row, col];
+                    bitcolumn[row] = ExtendedMatrix[row, col];
                 }
 
-                if (!syndrome.SequenceEqual(bitcolumn)) continue;
+                if (!optionalSyndrome.SequenceEqual(bitcolumn)) continue;
                 num = col;
                 break;
             }

@@ -132,7 +132,12 @@ namespace HammingCorrector.Tests
                 new byte[] { 1, 1, 1, 0, 1, 0, 1, 1 },
             };
 
-            var expectedRepairConstructions = new List<byte[]> { new byte[] { 1, 1, 1, 0, 1, 0, 1, 1 } };
+            var expectedRepairConstructions = new List<byte[]>
+            {
+                new byte[] {1, 0, 0, 0, 1, 0, 1, 1},
+                new byte[] {1, 0, 1, 1, 1, 0, 1, 1},
+                new byte[] {1, 1, 1, 0, 1, 0, 1, 1},
+            };
             //act
             var tools = new HammingRepairTools(H);
             var syndromes = tools.GetSyndromeList(constructionlist);

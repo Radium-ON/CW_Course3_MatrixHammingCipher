@@ -52,6 +52,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\ByteArrayToStringConverter.cs" />
+    <Compile Include="Converters\SyndromeToStringConverter.cs" />
     <Compile Include="HammingCorrectorModule.cs" />
     <Compile Include="HammingRepairTools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -110,5 +112,6 @@
       <Version>2.0.20525</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

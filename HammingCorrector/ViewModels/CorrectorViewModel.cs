@@ -32,6 +32,9 @@ namespace HammingCorrector.ViewModels
             _eventAggregator.GetEvent<HammingCodeSentEvent>().Subscribe(HammingCodesRecieved);
             _eventAggregator.GetEvent<CheckCodesMatrixSentEvent>().Subscribe(CheckMatrixRecieved);
             CorrectCodeCommand = new DelegateCommand(RepairMessageBlocks, CanRepair).ObservesProperty(() => HCodesCollection);
+
+            SyndromeCollection = new ObservableCollection<SyndromeViewModel>();
+            Corrections = new ObservableCollection<CorrectionViewModel>();
         }
 
         private void CheckMatrixRecieved(byte[,] matrix)
@@ -46,7 +49,20 @@ namespace HammingCorrector.ViewModels
 
         private void RepairMessageBlocks()
         {
-
+            SyndromeCollection.Clear();
+            Corrections.Clear();
+            var arrConstructions = ConvertObsCollectionToListOfByteArray(HCodesCollection);
+            HammingTools = new HammingRepairTools(_checkCodesMatrix);
+            var slist = HammingTools.GetSyndromeList(arrConstructions);
+            foreach (var arr in slist)
+            {
+                SyndromeCollection.Add(new SyndromeViewModel(arr));
+            }
+            var arrcorrections = HammingTools.GetRepairedConstructions(arrConstructions, slist);
+            for (var i = 0; i < arrcorrections.Count; i++)
+            {
+                Corrections.Add(new CorrectionViewModel(slist[i], arrcorrections[i]));
+            }
         }
 
         public ObservableCollection<ObservableCollection<byte>> HCodesCollection
@@ -83,20 +99,9 @@ namespace HammingCorrector.ViewModels
             HCodesCollection = collection;
         }
 
-        private byte[,] ConvertListArraysToTwoDimArray(ObservableCollection<ObservableCollection<byte>> list)
+        private List<byte[]> ConvertObsCollectionToListOfByteArray(ObservableCollection<ObservableCollection<byte>> list)
         {
-            var rows = list.Count;
-            var columns = list[0].Count;
-            var matrix = new byte[rows, columns];
-            for (var row = 0; row < rows; row++)
-            {
-                for (var col = 0; col < columns; col++)
-                {
-                    matrix[row, col] = list[row][col];
-                }
-            }
-
-            return matrix;
+            return list.Select(array => array.ToArray()).ToList();
         }
 
         #region DelegateCommands
